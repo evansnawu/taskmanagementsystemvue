@@ -3,7 +3,7 @@
 namespace App\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
-use Auth;
+
 
 trait FilterByOwner
 

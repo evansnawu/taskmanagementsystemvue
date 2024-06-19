@@ -9,17 +9,17 @@ use App\Http\Resources\TaskResource;
 use App\Models\Task;
 use App\Services\TaskService;
 use Exception;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
 use Inertia\Response;
-
+use Illuminate\Http\RedirectResponse;
 class TaskController extends Controller
 {
     public function __construct(public TaskService $taskService)
     {
     }
-    public function index()
+    public function index(): Response
     {
         $perPage = request('noperpage', 10);
         $orderColumn = request('ordercolumn', 'created_at');
@@ -44,7 +44,7 @@ class TaskController extends Controller
         ]);
     }
 
-    public function create()
+    public function create(): Response
     {
         $status = StatusEnum::toArrayComponent();
 
@@ -53,7 +53,7 @@ class TaskController extends Controller
         ]);
     }
 
-    public function store(StoreTaskRequest $request)
+    public function store(StoreTaskRequest $request):Redirector|RedirectResponse
     {
         try {
 
@@ -70,14 +70,14 @@ class TaskController extends Controller
         }
     }
 
-    public function show(Task $task)
+    public function show(Task $task): Response
     {
         return Inertia::render('Tasks/Show', [
             'task' => $task
         ]);
     }
 
-    public function edit(Task $task)
+    public function edit(Task $task): Response
     {
         $status = StatusEnum::toArrayComponent();
 
@@ -87,7 +87,7 @@ class TaskController extends Controller
         ]);
     }
 
-    public function update(UpdateTaskRequest $request, Task $task)
+    public function update(UpdateTaskRequest $request, Task $task):Redirector|RedirectResponse
     {
         try {
 
@@ -111,7 +111,7 @@ class TaskController extends Controller
         }
     }
 
-    public function destroy(Task $task)
+    public function destroy(Task $task):Redirector|RedirectResponse
     {
         try {
 
