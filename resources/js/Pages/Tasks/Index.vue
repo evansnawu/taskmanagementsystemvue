@@ -159,26 +159,7 @@ const deleteTask = (id) => {
                                     <table class="min-w-full divide-y divide-gray-300">
                                         <thead class="bg-gray-50">
                                             <tr>
-                                                <th scope="col"
-                                                    class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
-                                                    <div class="flex flex-row items-center justify-between cursor-pointer"
-                                                        @click="sortChanged('id')">
-                                                        <div class="leading-4 font-medium text-gray-700  tracking-wider"
-                                                            :class="{ 'font-bold text-blue-600': orderColumn === 'id' }">
-                                                            ID
-                                                        </div>
-                                                        <div class="select-none">
-                                                            <span :class="{
-                                                                'text-blue-600': orderDirection === 'asc' && orderColumn === 'id',
-                                                                'hidden': orderDirection !== '' && orderDirection !== 'asc' && orderColumn === 'id',
-                                                            }">&uarr;</span>
-                                                            <span :class="{
-                                                                'text-blue-600': orderDirection === 'desc' && orderColumn === 'id',
-                                                                'hidden': orderDirection !== '' && orderDirection !== 'desc' && orderColumn === 'id',
-                                                            }">&darr;</span>
-                                                        </div>
-                                                    </div>
-                                                </th>
+
                                                 <th scope="col"
                                                     class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
                                                     <div class="flex flex-row items-center justify-between cursor-pointer"
@@ -232,10 +213,7 @@ const deleteTask = (id) => {
                                         </thead>
                                         <tbody class="divide-y divide-gray-200 bg-white">
                                             <tr v-for="task in tasks.data" :key="task.id">
-                                                <td
-                                                    class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-500 sm:pl-6">
-                                                    {{ task.id }}
-                                                </td>
+                                   
                                                 <td
                                                     class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-500 sm:pl-6">
                                                     {{ task.title }}
